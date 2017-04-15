@@ -31,9 +31,9 @@
           fileconfig));
           transform = function(file){
             switch (false) {
-            case !(file.type === 'MD' && parts[1] === 'html'):
+            case !(file.language === 'Markdown' && parts[1] === 'html'):
               return marked(file.content);
-            case file.type !== 'JSON':
+            case file.language !== 'JSON':
               return JSON.parse(file.content);
             default:
               return file.content;

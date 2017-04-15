@@ -10,6 +10,12 @@
 3. Support versioning 
 4. Give a chance to fork and modify the content 
 
+#### Install 
+```Bash
+npm install cmsless
+```
+
+#### Usage
 ```Javascript
 
 var config = {

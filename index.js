@@ -26,7 +26,7 @@
           return callback(err);
         }
         getContent = function(fileconfig){
-          var parts, ext, transform, content;
+          var parts, ext, transform, content, transformed;
           parts = p.map(function(it){
             return it.trim();
           })(
@@ -43,15 +43,13 @@
               return content;
             }
           };
-          content = gistContent.files[parts[0]];
-          if (content != null) {
-            return transform(content);
-          } else {
-            return "";
-          }
+          content = gistContent.files[parts[0]].content;
+          transformed = content != null ? transform(content) : "";
+          return [parts[0], content];
         };
-        result = p.map(getContent)(
-        head.files);
+        result = p.pairsToObj(
+        p.map(getContent)(
+        head.files));
         load(tail, function(err, child){
           var collected;
           if (err != null) {

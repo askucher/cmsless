@@ -3,6 +3,12 @@
 # Manage your files as GitHub gists and load it to your website. 
 
 
+# Motivation 
+
+1. Do not spend time on installing or developing CMS
+2. Let other people build content for you 
+3. Support versioning 
+4. Give a chance to fork and modify the content 
 
 ```Javascript
 
@@ -24,6 +30,7 @@ var config = {
 
 cmsless(config).load(function(err, result){
   console.log(result);
+  //update your database and use it for your website
 });
 
 ```

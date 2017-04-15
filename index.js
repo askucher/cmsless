@@ -18,10 +18,30 @@
         return callback(null, []);
       }
       return github.getGist(head.id).read(function(err, gistContent){
-        var getContent, result;
+        var convertMd, convertJson, getContent, result;
         if (err != null) {
           return callback(err);
         }
+        convertMd = function(str){
+          var err, ref$;
+          try {
+            return marked(str);
+          } catch (e$) {
+            err = e$;
+            return (ref$ = err.message) != null ? ref$ : err;
+          }
+        };
+        convertJson = function(str){
+          var err, ref$;
+          try {
+            return JSON.parse(str);
+          } catch (e$) {
+            err = e$;
+            return {
+              error: (ref$ = err.message) != null ? ref$ : err
+            };
+          }
+        };
         getContent = function(fileconfig){
           var parts, transform, file, content;
           parts = p.map(function(it){
@@ -32,9 +52,9 @@
           transform = function(file){
             switch (false) {
             case !(file.language === 'Markdown' && parts[1] === 'html'):
-              return marked(file.content);
+              return convertMd(file.content);
             case file.language !== 'JSON':
-              return JSON.parse(file.content);
+              return convertJson(file.content);
             default:
               return file.content;
             }

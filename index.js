@@ -45,7 +45,7 @@
         };
         result = function(it){
           return {
-            id: head.id,
+            _id: head.id,
             files: it
           };
         }(

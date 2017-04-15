@@ -18,10 +18,30 @@
         return callback(null, []);
       }
       return github.getGist(head.id).read(function(err, gistContent){
-        var getContent, result;
+        var convertMd, convertJson, getContent, result;
         if (err != null) {
           return callback(err);
         }
+        convertMd = function(str){
+          var err, ref$;
+          try {
+            return marked(str);
+          } catch (e$) {
+            err = e$;
+            return (ref$ = err.message) != null ? ref$ : err;
+          }
+        };
+        convertJson = function(str){
+          var err, ref$;
+          try {
+            return JSON.parse(str);
+          } catch (e$) {
+            err = e$;
+            return {
+              error: (ref$ = err.message) != null ? ref$ : err
+            };
+          }
+        };
         getContent = function(fileconfig){
           var parts, transform, file, content;
           parts = p.map(function(it){
@@ -32,15 +52,14 @@
           transform = function(file){
             switch (false) {
             case !(file.language === 'Markdown' && parts[1] === 'html'):
-              return marked(file.content);
+              return convertMd(file.content);
             case file.language !== 'JSON':
-              return JSON.parse(file.content);
+              return convertJson(file.content);
             default:
               return file.content;
             }
           };
           file = gistContent.files[parts[0]];
-          console.log(file.language);
           content = file != null ? transform(file) : "";
           return [parts[0], content];
         };
@@ -61,7 +80,7 @@
       load: load(config.gists)
     };
   };
-  list = ['57ffb4bf954b70341f26e5079ff95ecd'];
+  list = ['e4784c834af0ec6bedb2f47614b54bec', '967bac6b366f292d47f9777ca0d2bf83', '57ffb4bf954b70341f26e5079ff95ecd'];
   createGist = function(id){
     return {
       id: id,
@@ -77,7 +96,7 @@
     list)
   };
   cmsless(config).load(function(err, items){
-    console.log(items);
+    console.log(err, items);
   });
   function curry$(f, bound){
     var context,

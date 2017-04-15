@@ -1,9 +1,9 @@
 ![Logo](https://content.screencast.com/users/a.stegno/folders/Jing/media/a92ac5f5-80ab-4c26-9d7b-db8f66b2aff0/00000419.png)
 
-# Manage your files as GitHub gists and load it to your website. 
+### Manage your files as GitHub gists and load it to your website. 
 
 
-# Motivation 
+#### Motivation 
 
 1. Do not spend time on installing or developing CMS
 2. Let other people build content for you 

@@ -18,6 +18,8 @@ npm install cmsless
 #### Usage
 ```Javascript
 
+var cmsless = require("cmsless");
+
 var config = {
   github: {
     username: "YOUR_GIRHUB_LOGIN",

@@ -43,7 +43,11 @@
           content = file != null ? transform(file) : "";
           return [parts[0], content];
         };
-        result = p.pairsToObj(
+        result = function(it){
+          return {
+            files: it
+          };
+        }(
         p.map(getContent)(
         head.files));
         load(tail, function(err, child){

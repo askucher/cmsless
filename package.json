@@ -1,31 +1,31 @@
 {
-  "homepage": "https://github.com/askucher/cmsless#readme",
-  "version": "0.1.9",
-  "subversion": 9,
-  "uperversion": "0.1",
-  "description": "Do not develop CMS. Edit your files as GitHub Gists",
-  "main": "index.js",
+  "name": "cmsless",
   "dependencies": {
     "github-api": "^3.0.0",
     "prelude-ls": "^1.1.2",
     "marked": "^0.3.6"
   },
-  "name": "cmsless",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "index.js",
+  "description": "Do not develop CMS. Edit your files as GitHub Gists",
+  "uperversion": "0.1",
+  "subversion": 10,
+  "version": "0.1.10",
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/askucher/cmsless/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/askucher/cmsless.git"
-  },
+  "license": "ISC",
+  "author": "Flyber",
   "keywords": [
     "cms",
     "content"
   ],
-  "author": "Flyber",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/askucher/cmsless/issues"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/askucher/cmsless.git"
   },
-  "devDependencies": {}
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/askucher/cmsless#readme"
 }
